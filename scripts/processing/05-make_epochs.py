@@ -129,9 +129,10 @@ def run_epochs(subject_id, tsss=False):
                     % (subject, l_freq)))
 
 
-###############################################################################
-# Let us make the script parallel across subjects
+if __name__ == '__main__':
+    ###########################################################################
+    # Let us make the script parallel across subjects
 
-parallel, run_func, _ = parallel_func(run_epochs, n_jobs=1)
-parallel(run_func(subject_id) for subject_id in range(1, 20))
-run_epochs(1, True)  # run on maxwell filtered data
+    parallel, run_func, _ = parallel_func(run_epochs, n_jobs=1)
+    parallel(run_func(subject_id) for subject_id in range(1, 20))
+    run_epochs(1, True)  # run on maxwell filtered data

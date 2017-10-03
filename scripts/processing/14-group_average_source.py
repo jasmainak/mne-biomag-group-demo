@@ -41,10 +41,12 @@ def morph_stc(subject_id):
     return morphed
 
 
-parallel, run_func, _ = parallel_func(morph_stc, n_jobs=N_JOBS)
-stcs = parallel(run_func(subject_id) for subject_id in range(1, 20)
-                if subject_id not in exclude)
+if __name__ == '__main__':
+    parallel, run_func, _ = parallel_func(morph_stc, n_jobs=N_JOBS)
+    stcs = parallel(run_func(subject_id) for subject_id in range(1, 20)
+                    if subject_id not in exclude)
 
-data = np.average([s.data for s in stcs], axis=0)
-stc = mne.SourceEstimate(data, stcs[0].vertices, stcs[0].tmin, stcs[0].tstep)
-stc.save(op.join(meg_dir, 'contrast-average'))
+    data = np.average([s.data for s in stcs], axis=0)
+    stc = mne.SourceEstimate(data, stcs[0].vertices, stcs[0].tmin,
+                             stcs[0].tstep)
+    stc.save(op.join(meg_dir, 'contrast-average'))

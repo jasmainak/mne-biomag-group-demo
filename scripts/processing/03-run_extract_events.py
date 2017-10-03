@@ -38,5 +38,7 @@ def run_events(subject_id):
         fname_events = op.join(data_path, 'run_%02d_filt_sss-eve.fif' % run)
         mne.write_events(fname_events, events)
 
-parallel, run_func, _ = parallel_func(run_events, n_jobs=N_JOBS)
-parallel(run_func(subject_id) for subject_id in range(1, 20))
+
+if __name__ == '__main__':
+    parallel, run_func, _ = parallel_func(run_events, n_jobs=N_JOBS)
+    parallel(run_func(subject_id) for subject_id in range(1, 20))

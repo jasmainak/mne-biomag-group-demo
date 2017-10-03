@@ -44,6 +44,7 @@ def run_ica(subject_id, tsss=False):
         ica.save(ica_name)
 
 
-parallel, run_func, _ = parallel_func(run_ica, n_jobs=N_JOBS)
-parallel(run_func(subject_id) for subject_id in range(1, 20))
-run_ica(1, True)
+if __name__ == '__main__':
+    parallel, run_func, _ = parallel_func(run_ica, n_jobs=N_JOBS)
+    parallel(run_func(subject_id) for subject_id in range(1, 20))
+    run_ica(1, True)

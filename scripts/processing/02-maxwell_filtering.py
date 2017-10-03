@@ -89,4 +89,5 @@ def run_filter(subject_id):
         raw.save(raw_out, overwrite=True)
 
 
-run_filter(subject_id=1)  # Only for sub01.
+if __name__ == '__main__':
+    run_filter(subject_id=1)  # Only for sub01.

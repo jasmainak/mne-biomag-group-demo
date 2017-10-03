@@ -54,5 +54,6 @@ def run_inverse(subject_id):
         stc.save(op.join(data_path, 'mne_dSPM_inverse-%s' % evoked.comment))
 
 
-parallel, run_func, _ = parallel_func(run_inverse, n_jobs=N_JOBS)
-parallel(run_func(subject_id) for subject_id in range(1, 20))
+if __name__ == '__main__':
+    parallel, run_func, _ = parallel_func(run_inverse, n_jobs=N_JOBS)
+    parallel(run_func(subject_id) for subject_id in range(1, 20))
