@@ -20,14 +20,23 @@ for fname, func in zip(filenames, funcs):
     print('Importing %s' % fname)
     mod = import_module(fname)
     func, args, kwargs = getattr(mod, func), (subject_id, ), {}
-    mem = memory_usage((func, args, kwargs), max_usage=True)
+    mem = memory_usage((func, args, kwargs), max_usage=True)[0]
     times.append(time.time() - t1)
     memory.append(mem)
 
+
+def make_autopct(values, unit):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct * total / 100.0))
+        return '{p:.2f}%  \n({v:d} {u:s})'.format(p=pct, v=val, u=unit)
+    return my_autopct
+
+
 # Plot memory and time taken
-plt.pie(memory, labels=funcs)
+plt.pie(memory, labels=funcs, autopct=make_autopct(memory, 'MB'))
 plt.title('Memory usage')
 
 plt.figure()
-plt.pie(times, labels=funcs)
+plt.pie(times, labels=funcs, autopct=make_autopct(times, 's'))
 plt.title('Time taken')
