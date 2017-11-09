@@ -7,13 +7,17 @@ The Power Spectral Density (PSD) plot shows different information for
 linear vs. log scale. We will demonstrate here how the PSD plot can be
 used to conveniently spot bad sensors.
 """
-import sys
 import os
 import os.path as op
+import sys
+
+import matplotlib.pyplot as plt
 
 import mne
 
-from library.config import study_path, map_subjects
+sys.path.append(op.join('..', '..', 'processing'))
+from library.config import (study_path, map_subjects, annot_kwargs,
+                            set_matplotlib_defaults)  # noqa: E402
 
 ###############################################################################
 # First some basic configuration as in all scripts
@@ -31,12 +35,11 @@ raw = mne.io.read_raw_fif(fname, preload=True)
 # Next, we get the list of bad channels
 mapping = map_subjects[subject_id]
 bads = list()
-bad_name = op.join(op.dirname(sys.argv[0]), '..', 'processing',
-                   'bads', mapping, 'run_%02d_raw_tr.fif_bad' % run)
-if os.path.exists(bad_name):
-    with open(bad_name) as f:
-        for line in f:
-            bads.append(line.strip())
+bad_name = op.join('..', '..', 'processing', 'bads', mapping,
+                   'run_%02d_raw_tr.fif_bad' % run)
+with open(bad_name) as f:
+    for line in f:
+        bads.append(line.strip())
 
 ###############################################################################
 # and set the EOG/ECG channels appropriately
@@ -72,39 +75,38 @@ for b in bads:
 ###############################################################################
 # First we show the log scale to spot bad sensors.
 
-import matplotlib.pyplot as plt  # noqa
-from library.config import set_matplotlib_defaults  # noqa
+fig, axes = plt.subplots(1, 2, figsize=(7, 2.25))
+set_matplotlib_defaults()
+ax = axes[0]
+raw.plot_psd(
+    average=False, line_alpha=0.6, fmin=0, fmax=350, xscale='log',
+    spatial_colors=False, show=False, ax=[ax])
+ax.set(xlabel='Frequency (Hz)', title='')
 
-set_matplotlib_defaults(plt)
-fig = raw.plot_psd(average=False, line_alpha=0.6,
-                   fmin=0, fmax=350, xscale='log',
-                   spatial_colors=False, show=False)
-plt.xlabel('Frequency (Hz)')
-
-lines = plt.gca().get_lines()
-for l, c in zip(lines, colors):
+for l, c in zip(ax.get_lines(), colors):
     if c == 'r':
         l.set_color(c)
-        l.set_linewidth(2.)
-        l.set_zorder(-1)
+        l.set_zorder(3)
+    else:
+        l.set_zorder(4)
 
-fig.tight_layout()
-plt.show()
-fig.savefig('psdA.pdf', bbox_to_inches='tight')
-
-###############################################################################
 # Next, the linear scale to check power line frequency
 
-fig = raw.plot_psd(average=False, line_alpha=0.6, n_fft=2048, n_overlap=1024,
-                   fmin=0, fmax=350, xscale='linear', spatial_colors=False)
-plt.xlabel('Frequency (Hz)')
-plt.ylabel('')
+ax = axes[1]
+raw.plot_psd(
+    average=False, line_alpha=0.6, n_fft=2048, n_overlap=1024, fmin=0,
+    fmax=350, xscale='linear', spatial_colors=False, show=False, ax=[ax])
+ax.set(xlabel='Frequency (Hz)', ylabel='', title='')
+ax.axvline(50., linestyle='--', alpha=0.25, linewidth=2)
+ax.axvline(50., linestyle='--', alpha=0.25, linewidth=2)
 
-plt.axvline(50., linestyle='--', alpha=0.25, linewidth=2)
-plt.axvline(50., linestyle='--', alpha=0.25, linewidth=2)
+for ai, (ax, label) in enumerate(zip(axes, 'AB')):
+    ax.annotate(label, (-0.15 if ai == 0 else -0.1, 1), **annot_kwargs)
+
 # HPI coils
 for freq in [293., 307., 314., 321., 328.]:
-    plt.axvline(freq, linestyle='--', alpha=0.25, linewidth=2)
+    ax.axvline(freq, linestyle='--', alpha=0.25, linewidth=2, zorder=2)
 
-plt.tight_layout()
-fig.savefig('psdB.pdf', bbox_to_inches='tight')
+fig.tight_layout()
+fig.savefig(op.join('..', 'figures', 'psd.pdf'), bbox_to_inches='tight')
+plt.show()

@@ -1,23 +1,29 @@
+# -*- coding: utf-8 -*-
 """
-==============
-Group analysis
-==============
+====================
+Group grand averages
+====================
 
-Run the group analysis.
+Grand-average group contrasts for sensor space, dSPM, and LCMV.
 """
+# sphinx_gallery_thumbnail_number = 1
+
 import os.path as op
+import sys
 
 import matplotlib.pyplot as plt
+
 import mne
 
+sys.path.append(op.join('..', '..', 'processing'))
 from library.config import (meg_dir, subjects_dir, set_matplotlib_defaults,
-                            l_freq)
+                            l_freq, tmax, annot_kwargs)  # noqa: E402
 
 evokeds = mne.read_evokeds(op.join(meg_dir,
                            'grand_average_highpass-%sHz-ave.fif' % l_freq))[:3]
 
 ###############################################################################
-# Sensor-space. See :ref:`sphx_glr_auto_scripts_09-group_average_sensors.py`
+# Sensor-space. See :ref:`sphx_glr_auto_scripts_11-group_average_sensors.py`
 # We use the same sensor EEG065 as in Wakeman et al.
 
 idx = evokeds[0].ch_names.index('EEG065')
@@ -43,40 +49,48 @@ for evoked in evokeds:
 # But here we prefer a slightly more involved plotting script to make a
 # publication ready graph.
 
-set_matplotlib_defaults(plt)
+set_matplotlib_defaults()
 
+fig, ax = plt.subplots(1, figsize=(3.3, 2.3))
 scale = 1e6
-plt.figure(figsize=(7, 5))
-plt.plot(evoked.times * 1000, mapping['Scrambled'].data[idx] * scale,
-         'r', linewidth=2, label='Scrambled')
-plt.plot(evoked.times * 1000, mapping['Unfamiliar'].data[idx] * scale,
-         'g', linewidth=2, label='Unfamiliar')
-plt.plot(evoked.times * 1000, mapping['Famous'].data[idx] * scale, 'b',
-         linewidth=2, label='Famous')
-plt.grid(True)
-plt.xlim([-100, 800])
-ax = plt.gca()
-plt.xlabel('Time (in ms after stimulus onset)')
-plt.ylabel(r'Potential difference ($\mu$V)')
-plt.legend()
-plt.tight_layout()
+ax.plot(evoked.times * 1000, mapping['Scrambled'].data[idx] * scale,
+        'r', label='Scrambled')
+ax.plot(evoked.times * 1000, mapping['Unfamiliar'].data[idx] * scale,
+        'g', label='Unfamiliar')
+ax.plot(evoked.times * 1000, mapping['Famous'].data[idx] * scale, 'b',
+        label='Famous')
+ax.grid(True)
+ax.set(xlim=[-100, 1000 * tmax], xlabel='Time (in ms after stimulus onset)',
+       ylim=[-12.5, 5], ylabel=u'Potential difference (μV)')
+ax.axvline(800, ls='--', color='k')
+if l_freq == 1:
+    ax.legend(loc='lower right')
+ax.annotate('A' if l_freq is None else 'B', (-0.2, 1), **annot_kwargs)
+fig.tight_layout(pad=0.5)
+fig.savefig(op.join('..', 'figures',
+                    'grand_average_highpass-%sHz.pdf' % l_freq))
 plt.show()
-plt.savefig('grand_average_highpass-%sHz.pdf' % l_freq)
 
 ###############################################################################
 # Source-space. See :ref:`sphx_glr_auto_scripts_14-group_average_source.py`
-fname = op.join(meg_dir, 'contrast-average')
-stc = mne.read_source_estimate(fname, subject='fsaverage')
-
-brain = stc.plot(views=['ven'], hemi='both', subject='fsaverage',
-                 subjects_dir=subjects_dir, initial_time=0.17, time_unit='s',
-                 clim={'lims': [99.75, 99.88, 99.98]})
+fname = op.join(meg_dir, 'contrast-average_highpass-%sHz' % (l_freq,))
+stc = mne.read_source_estimate(fname, subject='fsaverage').magnitude()
+lims = (1, 3, 5) if l_freq is None else (0.5, 1.5, 2.5)
+brain_dspm = stc.plot(
+    views=['ven'], hemi='both', subject='fsaverage', subjects_dir=subjects_dir,
+    initial_time=0.17, time_unit='s', figure=1, background='w',
+    clim=dict(kind='value', lims=lims), foreground='k')
+brain_dspm.save_image(op.join('..', 'figures',
+                              'dspm-ave_highpass-%sHz.png' % (l_freq,)))
 
 ###############################################################################
 # LCMV beamformer
-fname = op.join(meg_dir, 'contrast-average-lcmv')
+fname = op.join(meg_dir, 'contrast-average-lcmv_highpass-%sHz' % (l_freq,))
 stc = mne.read_source_estimate(fname, subject='fsaverage')
-
-brain = stc.plot(views=['ven'], hemi='both', subject='fsaverage',
-                 subjects_dir=subjects_dir, initial_time=0.17, time_unit='s',
-                 clim={'lims': [99.75, 99.88, 99.98]})
+lims = (0.015, 0.03, 0.045) if l_freq is None else (0.01, 0.02, 0.03)
+brain_lcmv = stc.plot(
+    views=['ven'], hemi='both', subject='fsaverage', subjects_dir=subjects_dir,
+    initial_time=0.17, time_unit='s', figure=2, background='w',
+    clim=dict(kind='value', lims=lims), foreground='k')
+brain_lcmv.save_image(op.join('..', 'figures',
+                              'lcmv-ave_highpass-%sHz.png' % (l_freq,)))

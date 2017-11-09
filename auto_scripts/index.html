@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Setup &#8212; MNE Biomag Demo</title>
+    <title>Processing scripts &#8212; MNE Biomag Demo</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -81,13 +81,16 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Setup</a><ul>
+<li><a class="reference internal" href="#">Processing scripts</a><ul>
+<li><a class="reference internal" href="#setup">Setup</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#sensor-space">Sensor space</a><ul>
 </ul>
 </li>
 <li><a class="reference internal" href="#source-space">Source space</a><ul>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -121,111 +124,148 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="setup">
-<span id="processing-scripts"></span><h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
-<div class="sphx-glr-thumbcontainer" tooltip="Fetch the data from OpenfMRI"><div class="figure" id="id1">
-<img alt="../_images/sphx_glr_02-python_filtering_thumb.png" src="../_images/sphx_glr_02-python_filtering_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="00-fetch_data.html#sphx-glr-auto-scripts-00-fetch-data-ipy"><span class="std std-ref">Fetch data on OpenfMRI</span></a></span></p>
+  <div class="section" id="processing-scripts">
+<span id="id1"></span><h1>Processing scripts<a class="headerlink" href="#processing-scripts" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setup" id="id21">Setup</a></li>
+<li><a class="reference internal" href="#sensor-space" id="id22">Sensor space</a></li>
+<li><a class="reference internal" href="#source-space" id="id23">Source space</a></li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h2><a class="toc-backref" href="#id21">Setup</a><a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This script gives some basic code that can be adapted to fetch data. "><div class="figure" id="id2">
+<img alt="../_images/sphx_glr_00-fetch_data_thumb.png" src="../_images/sphx_glr_00-fetch_data_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="00-fetch_data.html#sphx-glr-auto-scripts-00-fetch-data-py"><span class="std std-ref">00. Fetch data on OpenfMRI</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Run Freesurfer recon-all"><div class="figure" id="id2">
-<img alt="../_images/sphx_glr_03-run_extract_events_thumb.png" src="../_images/sphx_glr_03-run_extract_events_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="01-run_anatomy.html#sphx-glr-auto-scripts-01-run-anatomy-ipy"><span class="std std-ref">Run Freesurfer/MNE anatomical pipeline</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="This runs Freesurfer recon-all on all subjects and computes the BEM surfaces later used for for..."><div class="figure" id="id3">
+<img alt="../_images/sphx_glr_01-anatomy_thumb.png" src="../_images/sphx_glr_01-anatomy_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="01-anatomy.html#sphx-glr-auto-scripts-01-anatomy-py"><span class="std std-ref">01. Run Freesurfer/MNE anatomical pipeline</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Config for paths"><div class="figure" id="id3">
-<img alt="../_images/sphx_glr_02-python_filtering_thumb.png" src="../_images/sphx_glr_02-python_filtering_thumb.png" />
+<div class="sphx-glr-thumbcontainer" tooltip="Configuration parameters for the study. This should be in a folder called ``library/`` inside t..."><div class="figure" id="id4">
+<img alt="../_images/sphx_glr_config_thumb.png" src="../_images/sphx_glr_config_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="library/config.html#sphx-glr-auto-scripts-library-config-py"><span class="std std-ref">Config file</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
+<div class="toctree-wrapper compound">
+</div>
 <div style='clear:both'></div></div>
 <div class="section" id="sensor-space">
-<h1>Sensor space<a class="headerlink" href="#sensor-space" title="Permalink to this headline">¶</a></h1>
-<div class="sphx-glr-thumbcontainer" tooltip="The data are bandpass filtered (1 - 40 Hz) using linear-phase fir filter with delay compensatio..."><div class="figure" id="id4">
-<img alt="../_images/sphx_glr_02-python_filtering_thumb.png" src="../_images/sphx_glr_02-python_filtering_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="02-python_filtering.html#sphx-glr-auto-scripts-02-python-filtering-py"><span class="std std-ref">Filter using MNE-python</span></a></span></p>
+<h2><a class="toc-backref" href="#id22">Sensor space</a><a class="headerlink" href="#sensor-space" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="The events are extracted from stimulus channel &#x27;STI101&#x27;. The events are saved to the subject&#x27;s ..."><div class="figure" id="id5">
+<img alt="../_images/sphx_glr_02-extract_events_thumb.png" src="../_images/sphx_glr_02-extract_events_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="02-extract_events.html#sphx-glr-auto-scripts-02-extract-events-py"><span class="std std-ref">02. Extract events from the stimulus channel</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The data are bandpass filtered (1 - 40 Hz) using linear-phase fir filter with delay compensatio..."><div class="figure" id="id5">
-<img alt="../_images/sphx_glr_02-maxwell_filtering_thumb.png" src="../_images/sphx_glr_02-maxwell_filtering_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="02-maxwell_filtering.html#sphx-glr-auto-scripts-02-maxwell-filtering-py"><span class="std std-ref">Maxwell filter using MNE-python</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="The data are Maxwell filtered using tSSS and movement compensation."><div class="figure" id="id6">
+<img alt="../_images/sphx_glr_03-maxwell_filtering_thumb.png" src="../_images/sphx_glr_03-maxwell_filtering_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="03-maxwell_filtering.html#sphx-glr-auto-scripts-03-maxwell-filtering-py"><span class="std std-ref">03. Maxwell filter using MNE-python</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The events are extracted from stimulus channel 'STI101'. The events are saved to the subject's ..."><div class="figure" id="id6">
-<img alt="../_images/sphx_glr_03-run_extract_events_thumb.png" src="../_images/sphx_glr_03-run_extract_events_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="03-run_extract_events.html#sphx-glr-auto-scripts-03-run-extract-events-py"><span class="std std-ref">Extract events from the stimulus channel</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="The data are bandpass filtered (1 - 40 Hz) using linear-phase fir filter with delay compensatio..."><div class="figure" id="id7">
+<img alt="../_images/sphx_glr_04-python_filtering_thumb.png" src="../_images/sphx_glr_04-python_filtering_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="04-python_filtering.html#sphx-glr-auto-scripts-04-python-filtering-py"><span class="std std-ref">04. Filter using MNE-python</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="ICA decomposition using fastICA. "><div class="figure" id="id7">
-<img alt="../_images/sphx_glr_04-run_ica_thumb.png" src="../_images/sphx_glr_04-run_ica_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="04-run_ica.html#sphx-glr-auto-scripts-04-run-ica-py"><span class="std std-ref">Run ICA</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="ICA decomposition using fastICA. "><div class="figure" id="id8">
+<img alt="../_images/sphx_glr_05-run_ica_thumb.png" src="../_images/sphx_glr_05-run_ica_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="05-run_ica.html#sphx-glr-auto-scripts-05-run-ica-py"><span class="std std-ref">05. Run ICA</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The epochs are constructed by using the events created in script 03. MNE supports hierarchical ..."><div class="figure" id="id8">
-<img alt="../_images/sphx_glr_05-make_epochs_thumb.png" src="../_images/sphx_glr_05-make_epochs_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="05-make_epochs.html#sphx-glr-auto-scripts-05-make-epochs-py"><span class="std std-ref">Construct epochs</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="The epochs are constructed by using the events created in script 03. MNE supports hierarchical ..."><div class="figure" id="id9">
+<img alt="../_images/sphx_glr_06-make_epochs_thumb.png" src="../_images/sphx_glr_06-make_epochs_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="06-make_epochs.html#sphx-glr-auto-scripts-06-make-epochs-py"><span class="std std-ref">06. Construct epochs</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The evoked data sets are created by averaging different categories of epochs. The evoked data i..."><div class="figure" id="id9">
-<img alt="../_images/sphx_glr_06-make_evoked_thumb.png" src="../_images/sphx_glr_06-make_evoked_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="06-make_evoked.html#sphx-glr-auto-scripts-06-make-evoked-py"><span class="std std-ref">Evoked data and covariance</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="The evoked data sets are created by averaging different categories of epochs. The evoked data i..."><div class="figure" id="id10">
+<img alt="../_images/sphx_glr_07-make_evoked_thumb.png" src="../_images/sphx_glr_07-make_evoked_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="07-make_evoked.html#sphx-glr-auto-scripts-07-make-evoked-py"><span class="std std-ref">07. Evoked data</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The epoched data is transformed to time-frequency domain using morlet wavelets. Faces and scram..."><div class="figure" id="id10">
-<img alt="../_images/sphx_glr_07-time_frequency_thumb.png" src="../_images/sphx_glr_07-time_frequency_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="07-time_frequency.html#sphx-glr-auto-scripts-07-time-frequency-py"><span class="std std-ref">Time-frequency representation</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Covariance matrices are computed and saved. "><div class="figure" id="id11">
+<img alt="../_images/sphx_glr_08-make_cov_thumb.png" src="../_images/sphx_glr_08-make_cov_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="08-make_cov.html#sphx-glr-auto-scripts-08-make-cov-py"><span class="std std-ref">08. Baseline covariance estimation</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Time decoding fits a Logistic Regression model for every time point in the epoch. In this examp..."><div class="figure" id="id11">
-<img alt="../_images/sphx_glr_08-run_time_decoding_thumb.png" src="../_images/sphx_glr_08-run_time_decoding_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="08-run_time_decoding.html#sphx-glr-auto-scripts-08-run-time-decoding-py"><span class="std std-ref">Time Decoding</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="The epoched data is transformed to time-frequency domain using morlet wavelets. Faces and scram..."><div class="figure" id="id12">
+<img alt="../_images/sphx_glr_09-time_frequency_thumb.png" src="../_images/sphx_glr_09-time_frequency_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="09-time_frequency.html#sphx-glr-auto-scripts-09-time-frequency-py"><span class="std std-ref">09. Time-frequency decomposition</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="The EEG-channel data are averaged for group averages. "><div class="figure" id="id12">
-<img alt="../_images/sphx_glr_09-group_average_sensors_thumb.png" src="../_images/sphx_glr_09-group_average_sensors_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="09-group_average_sensors.html#sphx-glr-auto-scripts-09-group-average-sensors-py"><span class="std std-ref">Group average on sensor level</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="A sliding estimator fits a logistic legression model for every time point. In this example, we ..."><div class="figure" id="id13">
+<img alt="../_images/sphx_glr_10-sliding_estimator_thumb.png" src="../_images/sphx_glr_10-sliding_estimator_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="10-sliding_estimator.html#sphx-glr-auto-scripts-10-sliding-estimator-py"><span class="std std-ref">Sliding estimator</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div style='clear:both'></div></div>
-<div class="section" id="source-space">
-<h1>Source space<a class="headerlink" href="#source-space" title="Permalink to this headline">¶</a></h1>
-<div class="sphx-glr-thumbcontainer" tooltip="Calculate forward solution for MEG channels. "><div class="figure" id="id13">
+<div class="sphx-glr-thumbcontainer" tooltip="The EEG-channel data are averaged for group averages. "><div class="figure" id="id14">
+<img alt="../_images/sphx_glr_11-group_average_sensors_thumb.png" src="../_images/sphx_glr_11-group_average_sensors_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="11-group_average_sensors.html#sphx-glr-auto-scripts-11-group-average-sensors-py"><span class="std std-ref">11. Group average at the sensor level</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Calculate forward solution for MEG channels. "><div class="figure" id="id15">
 <img alt="../_images/sphx_glr_12-make_forward_thumb.png" src="../_images/sphx_glr_12-make_forward_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="12-make_forward.html#sphx-glr-auto-scripts-12-make-forward-py"><span class="std std-ref">Forward solution</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="12-make_forward.html#sphx-glr-auto-scripts-12-make-forward-py"><span class="std std-ref">12. Forward solution</span></a></span></p>
 </div>
-</div><div class="toctree-wrapper compound">
+</div><div style='clear:both'></div></div>
+<div class="section" id="source-space">
+<h2><a class="toc-backref" href="#id23">Source space</a><a class="headerlink" href="#source-space" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Compute inverse solution for each evoked data set. "><div class="figure" id="id14">
+<div class="sphx-glr-thumbcontainer" tooltip="Compute inverse solution for each evoked data set. "><div class="figure" id="id16">
 <img alt="../_images/sphx_glr_13-make_inverse_thumb.png" src="../_images/sphx_glr_13-make_inverse_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="13-make_inverse.html#sphx-glr-auto-scripts-13-make-inverse-py"><span class="std std-ref">Inverse solution</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="13-make_inverse.html#sphx-glr-auto-scripts-13-make-inverse-py"><span class="std std-ref">13. Inverse solution</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Source estimates are computed for contrast between faces and scrambled and morphed to average b..."><div class="figure" id="id15">
+<div class="sphx-glr-thumbcontainer" tooltip="Source estimates are morphed to the ``fsaverage`` brain. "><div class="figure" id="id17">
 <img alt="../_images/sphx_glr_14-group_average_source_thumb.png" src="../_images/sphx_glr_14-group_average_source_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="14-group_average_source.html#sphx-glr-auto-scripts-14-group-average-source-py"><span class="std std-ref">Group average on source level</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="14-group_average_source.html#sphx-glr-auto-scripts-14-group-average-source-py"><span class="std std-ref">14. Group average on source level</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Make web report"><div class="figure" id="id16">
+<div class="sphx-glr-thumbcontainer" tooltip="Compute LCMV beamformer. "><div class="figure" id="id18">
+<img alt="../_images/sphx_glr_15-lcmv_beamformer_thumb.png" src="../_images/sphx_glr_15-lcmv_beamformer_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="15-lcmv_beamformer.html#sphx-glr-auto-scripts-15-lcmv-beamformer-py"><span class="std std-ref">15. LCMV beamformer</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Source estimates are computed for contrast between faces and scrambled and morphed to average b..."><div class="figure" id="id19">
+<img alt="../_images/sphx_glr_16-group_average_lcmv_thumb.png" src="../_images/sphx_glr_16-group_average_lcmv_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="16-group_average_lcmv.html#sphx-glr-auto-scripts-16-group-average-lcmv-py"><span class="std std-ref">16. Group average on LCMV beamformer</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Builds an html report containing all the relevant analysis plots. "><div class="figure" id="id20">
 <img alt="../_images/sphx_glr_99-make_reports_thumb.png" src="../_images/sphx_glr_99-make_reports_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="99-make_reports.html#sphx-glr-auto-scripts-99-make-reports-py"><span class="std std-ref">Make report</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="99-make_reports.html#sphx-glr-auto-scripts-99-make-reports-py"><span class="std std-ref">99. Make reports</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div style='clear:both'></div><p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<div style='clear:both'></div><div class="sphx-glr-footer container">
+<div class="sphx-glr-download container">
+<code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_scripts_python.zip</span></code></div>
+<div class="sphx-glr-download container">
+<code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_scripts_jupyter.zip</span></code></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 
@@ -240,7 +280,7 @@
       
     </p>
     <p>
-        &copy; Copyright 2017, MNE Developers. Last updated on 2017-09-28.<br/>
+        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-09.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.<br/>
     </p>
   </div>

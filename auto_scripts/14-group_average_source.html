@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Group average on source level &#8212; MNE Biomag Demo</title>
+    <title>14. Group average on source level &#8212; MNE Biomag Demo</title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -81,7 +81,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Group average on source level</a></li>
+<li><a class="reference internal" href="#">14. Group average on source level</a></li>
 </ul>
 </ul>
 </li>
@@ -114,20 +114,17 @@
     <div class="col-md-12 content">
       
   <div class="section" id="group-average-on-source-level">
-<span id="sphx-glr-auto-scripts-14-group-average-source-py"></span><h1>Group average on source level<a class="headerlink" href="#group-average-on-source-level" title="Permalink to this headline">¶</a></h1>
-<p>Source estimates are computed for contrast between faces and scrambled and
-morphed to average brain,</p>
+<span id="sphx-glr-auto-scripts-14-group-average-source-py"></span><h1>14. Group average on source level<a class="headerlink" href="#group-average-on-source-level" title="Permalink to this headline">¶</a></h1>
+<p>Source estimates are morphed to the <code class="docutils literal"><span class="pre">fsaverage</span></code> brain.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span> <span class="kn">as</span> <span class="nn">op</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">import</span> <span class="nn">mne</span>
 <span class="kn">from</span> <span class="nn">mne.parallel</span> <span class="kn">import</span> <span class="n">parallel_func</span>
-<span class="kn">from</span> <span class="nn">mne.minimum_norm</span> <span class="kn">import</span> <a href="http://mne-tools.github.io/stable/generated/mne.minimum_norm.apply_inverse.html#mne.minimum_norm.apply_inverse" title="View documentation for mne.minimum_norm.apply_inverse"><span class="n">apply_inverse</span></a><span class="p">,</span> <a href="http://mne-tools.github.io/stable/generated/mne.minimum_norm.read_inverse_operator.html#mne.minimum_norm.read_inverse_operator" title="View documentation for mne.minimum_norm.read_inverse_operator"><span class="n">read_inverse_operator</span></a>
 
-<span class="kn">from</span> <span class="nn">library.config</span> <span class="kn">import</span> <span class="n">meg_dir</span><span class="p">,</span> <span class="n">subjects_dir</span><span class="p">,</span> <span class="n">spacing</span><span class="p">,</span> <span class="n">N_JOBS</span>
-
-<span class="n">stcs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="n">exclude</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>  <span class="c1"># Excluded subjects</span>
+<span class="kn">from</span> <span class="nn">library.config</span> <span class="kn">import</span> <span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="n">subjects_dir</span><span class="p">,</span> <span class="n">N_JOBS</span><span class="p">,</span> <span class="n">smooth</span><span class="p">,</span>
+                            <span class="n">fsaverage_vertices</span><span class="p">,</span> <span class="n">exclude_subjects</span><span class="p">,</span> <span class="n">l_freq</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">morph_stc</span><span class="p">(</span><span class="n">subject_id</span><span class="p">):</span>
@@ -135,30 +132,34 @@ morphed to average brain,</p>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;processing subject: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">subject</span><span class="p">)</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
 
-    <span class="n">evokeds</span> <span class="o">=</span> <a href="http://mne-tools.github.io/stable/generated/mne.read_evokeds.html#mne.read_evokeds" title="View documentation for mne.read_evokeds"><span class="n">mne</span><span class="o">.</span><span class="n">read_evokeds</span></a><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span>
-                                       <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_highpass-1Hz_ave.fif&#39;</span> <span class="o">%</span> <span class="n">subject</span><span class="p">))</span>
-
-    <span class="n">contrast</span> <span class="o">=</span> <span class="n">evokeds</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="n">fname_inv</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-meg-</span><span class="si">%s</span><span class="s1">-inv.fif&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">spacing</span><span class="p">))</span>
-    <span class="n">inv</span> <span class="o">=</span> <a href="http://mne-tools.github.io/stable/generated/mne.minimum_norm.read_inverse_operator.html#mne.minimum_norm.read_inverse_operator" title="View documentation for mne.minimum_norm.read_inverse_operator"><span class="n">read_inverse_operator</span></a><span class="p">(</span><span class="n">fname_inv</span><span class="p">)</span>
-
-    <span class="c1"># Compute inverse solution</span>
-    <span class="n">snr</span> <span class="o">=</span> <span class="mf">3.0</span>
-    <span class="n">lambda2</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">snr</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="n">stc</span> <span class="o">=</span> <a href="http://mne-tools.github.io/stable/generated/mne.minimum_norm.apply_inverse.html#mne.minimum_norm.apply_inverse" title="View documentation for mne.minimum_norm.apply_inverse"><span class="n">apply_inverse</span></a><span class="p">(</span><span class="n">contrast</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="n">lambda2</span><span class="p">,</span> <span class="s2">&quot;dSPM&quot;</span><span class="p">,</span> <span class="n">pick_ori</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
-    <span class="n">morphed</span> <span class="o">=</span> <span class="n">stc</span><span class="o">.</span><span class="n">morph</span><span class="p">(</span><span class="n">subject_from</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">subject_to</span><span class="o">=</span><span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span>
-                        <span class="n">subjects_dir</span><span class="o">=</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">grade</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-    <span class="n">morphed</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;contrast-morphed&#39;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">morphed</span>
+    <span class="c1"># Morph STCs</span>
+    <span class="n">morph_mat</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;contrast&#39;</span><span class="p">,</span> <span class="s1">&#39;faces_eq&#39;</span><span class="p">,</span> <span class="s1">&#39;scrambled_eq&#39;</span><span class="p">):</span>
+        <span class="n">stc</span> <span class="o">=</span> <a href="https://mne-tools.github.io/dev/generated/mne.read_source_estimate.html#mne.read_source_estimate" title="View documentation for mne.read_source_estimate"><span class="n">mne</span><span class="o">.</span><span class="n">read_source_estimate</span></a><span class="p">(</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s1">&#39;mne_dSPM_inverse_highpass-</span><span class="si">%s</span><span class="s1">Hz-</span><span class="si">%s</span><span class="s1">&#39;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">l_freq</span><span class="p">,</span> <span class="n">condition</span><span class="p">)),</span> <span class="n">subject</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">morph_mat</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">morph_mat</span> <span class="o">=</span> <a href="https://mne-tools.github.io/dev/generated/mne.compute_morph_matrix.html#mne.compute_morph_matrix" title="View documentation for mne.compute_morph_matrix"><span class="n">mne</span><span class="o">.</span><span class="n">compute_morph_matrix</span></a><span class="p">(</span>
+                <span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span> <span class="n">stc</span><span class="o">.</span><span class="n">vertices</span><span class="p">,</span> <span class="n">fsaverage_vertices</span><span class="p">,</span> <span class="n">smooth</span><span class="p">,</span>
+                <span class="n">subjects_dir</span><span class="o">=</span><span class="n">subjects_dir</span><span class="p">,</span> <span class="n">warn</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">morphed</span> <span class="o">=</span> <span class="n">stc</span><span class="o">.</span><span class="n">morph_precomputed</span><span class="p">(</span><span class="s1">&#39;fsaverage&#39;</span><span class="p">,</span> <span class="n">fsaverage_vertices</span><span class="p">,</span>
+                                        <span class="n">morph_mat</span><span class="p">)</span>
+        <span class="n">morphed</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span>
+                             <span class="s1">&#39;mne_dSPM_inverse_morph_highpass-</span><span class="si">%s</span><span class="s1">Hz-</span><span class="si">%s</span><span class="s1">&#39;</span>
+                             <span class="o">%</span> <span class="p">(</span><span class="n">l_freq</span><span class="p">,</span> <span class="n">condition</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">condition</span> <span class="o">==</span> <span class="s1">&#39;contrast&#39;</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">morphed</span>
+    <span class="k">return</span> <span class="n">out</span>
 
 
 <span class="n">parallel</span><span class="p">,</span> <span class="n">run_func</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parallel_func</span><span class="p">(</span><span class="n">morph_stc</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">N_JOBS</span><span class="p">)</span>
-<span class="n">stcs</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span><span class="n">run_func</span><span class="p">(</span><span class="n">subject_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">subject_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.9.1/reference/generated/numpy.average.html#numpy.average" title="View documentation for numpy.average"><span class="n">np</span><span class="o">.</span><span class="n">average</span></a><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stcs</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">stc</span> <span class="o">=</span> <a href="http://mne-tools.github.io/stable/generated/mne.SourceEstimate.html#mne.SourceEstimate" title="View documentation for mne.SourceEstimate"><span class="n">mne</span><span class="o">.</span><span class="n">SourceEstimate</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vertices</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tmin</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tstep</span><span class="p">)</span>
-<span class="n">stc</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="s1">&#39;contrast-average&#39;</span><span class="p">))</span>
+<span class="n">stcs</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span><span class="n">run_func</span><span class="p">(</span><span class="n">subject_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">stcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">stc</span> <span class="k">for</span> <span class="n">stc</span><span class="p">,</span> <span class="n">subject_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">stcs</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">subject_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude_subjects</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy-dev/reference/generated/numpy.average.html#numpy.average" title="View documentation for numpy.average"><span class="n">np</span><span class="o">.</span><span class="n">average</span></a><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">data</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stcs</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">stc</span> <span class="o">=</span> <a href="https://mne-tools.github.io/dev/generated/mne.VectorSourceEstimate.html#mne.VectorSourceEstimate" title="View documentation for mne.VectorSourceEstimate"><span class="n">mne</span><span class="o">.</span><span class="n">VectorSourceEstimate</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vertices</span><span class="p">,</span>
+                               <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tmin</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tstep</span><span class="p">,</span> <span class="n">stcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
+<span class="n">stc</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="s1">&#39;contrast-average_highpass-</span><span class="si">%s</span><span class="s1">Hz&#39;</span> <span class="o">%</span> <span class="n">l_freq</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
@@ -168,7 +169,7 @@ morphed to average brain,</p>
 <div class="sphx-glr-download container">
 <a class="reference download internal" href="../_downloads/14-group_average_source.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">14-group_average_source.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
 
 
@@ -183,7 +184,7 @@ morphed to average brain,</p>
       
     </p>
     <p>
-        &copy; Copyright 2017, MNE Developers. Last updated on 2017-09-28.<br/>
+        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-09.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.<br/>
     </p>
   </div>
