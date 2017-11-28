@@ -3,15 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Temporal clustering on a single channel &#8212; MNE Biomag Demo</title>
-    
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,10 +20,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -129,7 +124,7 @@ on the contrast faces vs. scrambled.</p>
 
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;processing&#39;</span><span class="p">))</span>
 <span class="kn">from</span> <span class="nn">library.config</span> <span class="kn">import</span> <span class="p">(</span><span class="n">meg_dir</span><span class="p">,</span> <span class="n">l_freq</span><span class="p">,</span> <span class="n">N_JOBS</span><span class="p">,</span> <span class="n">set_matplotlib_defaults</span><span class="p">,</span>
-                            <span class="n">exclude_subjects</span><span class="p">,</span> <span class="n">annot_kwargs</span><span class="p">)</span>  <span class="c1"># noqa: E402</span>
+                            <span class="n">exclude_subjects</span><span class="p">,</span> <span class="n">annot_kwargs</span><span class="p">,</span> <span class="n">random_state</span><span class="p">)</span>  <span class="c1"># noqa: E402</span>
 </pre></div>
 </div>
 <p>Read all the data</p>
@@ -187,7 +182,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">159</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">139</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -209,7 +204,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">194</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">193</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -220,7 +215,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">126</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">127</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -264,7 +259,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">85</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">116</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -286,7 +281,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">107</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">116</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -297,7 +292,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">59</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -319,7 +314,7 @@ on the contrast faces vs. scrambled.</p>
     <span class="n">Found</span> <span class="n">the</span> <span class="n">data</span> <span class="n">of</span> <span class="n">interest</span><span class="p">:</span>
         <span class="n">t</span> <span class="o">=</span>    <span class="o">-</span><span class="mf">200.00</span> <span class="o">...</span>    <span class="mf">2900.00</span> <span class="n">ms</span> <span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
         <span class="mi">0</span> <span class="n">CTF</span> <span class="n">compensation</span> <span class="n">matrices</span> <span class="n">available</span>
-        <span class="n">nave</span> <span class="o">=</span> <span class="mi">125</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">nave</span> <span class="o">=</span> <span class="mi">135</span> <span class="o">-</span> <span class="n">aspect</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Projections</span> <span class="n">have</span> <span class="n">already</span> <span class="n">been</span> <span class="n">applied</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">proj</span> <span class="n">attribute</span> <span class="n">to</span> <span class="kc">True</span><span class="o">.</span>
 <span class="n">No</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="n">applied</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
@@ -359,20 +354,84 @@ on the contrast faces vs. scrambled.</p>
 <span class="n">cluster_stats</span> <span class="o">=</span> <a href="https://mne-tools.github.io/dev/generated/mne.stats.permutation_cluster_1samp_test.html#mne.stats.permutation_cluster_1samp_test" title="View documentation for mne.stats.permutation_cluster_1samp_test"><span class="n">permutation_cluster_1samp_test</span></a><span class="p">(</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">N_JOBS</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">tail</span><span class="o">=</span><span class="n">tail</span><span class="p">,</span>
     <span class="n">step_down_p</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span><span class="p">,</span>
-    <span class="n">n_permutations</span><span class="o">=</span><span class="n">n_permutations</span><span class="p">)</span>
+    <span class="n">n_permutations</span><span class="o">=</span><span class="n">n_permutations</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
 
 <span class="n">T_obs</span><span class="p">,</span> <span class="n">clusters</span><span class="p">,</span> <span class="n">cluster_p_values</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cluster_stats</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">stat_fun</span><span class="p">(</span><span class="n">H1</span><span class="p">):</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">9.408052</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.992866</span>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">stat_fun</span><span class="p">(</span><span class="n">H1</span><span class="p">):</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">8.458284</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.145938</span>
 <span class="n">Running</span> <span class="n">initial</span> <span class="n">clustering</span>
 <span class="n">Found</span> <span class="mi">2</span> <span class="n">clusters</span>
 <span class="n">Permuting</span> <span class="mi">999</span> <span class="n">times</span><span class="o">...</span>
-<span class="n">Computing</span> <span class="n">cluster</span> <span class="n">p</span><span class="o">-</span><span class="n">values</span>
+
+<span class="p">[</span>                                        <span class="p">]</span> <span class="mf">0.10010</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.</span>                                       <span class="p">]</span> <span class="mf">3.20320</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">..</span>                                      <span class="p">]</span> <span class="mf">6.40641</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">...</span>                                     <span class="p">]</span> <span class="mf">9.60961</span> \
+<span class="p">[</span><span class="o">.....</span>                                   <span class="p">]</span> <span class="mf">12.81281</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">......</span>                                  <span class="p">]</span> <span class="mf">16.01602</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.......</span>                                 <span class="p">]</span> <span class="mf">19.21922</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">........</span>                                <span class="p">]</span> <span class="mf">22.42242</span> \
+<span class="p">[</span><span class="o">..........</span>                              <span class="p">]</span> <span class="mf">25.62563</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">...........</span>                             <span class="p">]</span> <span class="mf">28.82883</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">............</span>                            <span class="p">]</span> <span class="mf">32.03203</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">..............</span>                          <span class="p">]</span> <span class="mf">35.23524</span> \
+<span class="p">[</span><span class="o">...............</span>                         <span class="p">]</span> <span class="mf">38.43844</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">................</span>                        <span class="p">]</span> <span class="mf">41.64164</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.................</span>                       <span class="p">]</span> <span class="mf">44.84484</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">...................</span>                     <span class="p">]</span> <span class="mf">48.04805</span> \
+<span class="p">[</span><span class="o">....................</span>                    <span class="p">]</span> <span class="mf">51.25125</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.....................</span>                   <span class="p">]</span> <span class="mf">54.45445</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.......................</span>                 <span class="p">]</span> <span class="mf">57.65766</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">........................</span>                <span class="p">]</span> <span class="mf">60.86086</span> \
+<span class="p">[</span><span class="o">.........................</span>               <span class="p">]</span> <span class="mf">64.06406</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">..........................</span>              <span class="p">]</span> <span class="mf">67.26727</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">............................</span>            <span class="p">]</span> <span class="mf">70.47047</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">.............................</span>           <span class="p">]</span> <span class="mf">73.67367</span> \
+<span class="p">[</span><span class="o">..............................</span>          <span class="p">]</span> <span class="mf">76.87688</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">................................</span>        <span class="p">]</span> <span class="mf">80.08008</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.................................</span>       <span class="p">]</span> <span class="mf">83.28328</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">..................................</span>      <span class="p">]</span> <span class="mf">86.48649</span> \
+<span class="p">[</span><span class="o">...................................</span>     <span class="p">]</span> <span class="mf">89.68969</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.....................................</span>   <span class="p">]</span> <span class="mf">92.89289</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">......................................</span>  <span class="p">]</span> <span class="mf">96.09610</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">.......................................</span> <span class="p">]</span> <span class="mf">99.29930</span> \    <span class="n">Computing</span> <span class="n">cluster</span> <span class="n">p</span><span class="o">-</span><span class="n">values</span>
 <span class="n">Step</span><span class="o">-</span><span class="n">down</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">jumps</span> <span class="n">iteration</span> <span class="c1">#1 found 2 clusters to exclude from subsequent iterations</span>
 <span class="n">Permuting</span> <span class="mi">999</span> <span class="n">times</span><span class="o">...</span>
-<span class="n">Computing</span> <span class="n">cluster</span> <span class="n">p</span><span class="o">-</span><span class="n">values</span>
+
+<span class="p">[</span>                                        <span class="p">]</span> <span class="mf">0.10010</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.</span>                                       <span class="p">]</span> <span class="mf">3.20320</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">..</span>                                      <span class="p">]</span> <span class="mf">6.40641</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">...</span>                                     <span class="p">]</span> <span class="mf">9.60961</span> \
+<span class="p">[</span><span class="o">.....</span>                                   <span class="p">]</span> <span class="mf">12.81281</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">......</span>                                  <span class="p">]</span> <span class="mf">16.01602</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.......</span>                                 <span class="p">]</span> <span class="mf">19.21922</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">........</span>                                <span class="p">]</span> <span class="mf">22.42242</span> \
+<span class="p">[</span><span class="o">..........</span>                              <span class="p">]</span> <span class="mf">25.62563</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">...........</span>                             <span class="p">]</span> <span class="mf">28.82883</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">............</span>                            <span class="p">]</span> <span class="mf">32.03203</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">..............</span>                          <span class="p">]</span> <span class="mf">35.23524</span> \
+<span class="p">[</span><span class="o">...............</span>                         <span class="p">]</span> <span class="mf">38.43844</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">................</span>                        <span class="p">]</span> <span class="mf">41.64164</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.................</span>                       <span class="p">]</span> <span class="mf">44.84484</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">...................</span>                     <span class="p">]</span> <span class="mf">48.04805</span> \
+<span class="p">[</span><span class="o">....................</span>                    <span class="p">]</span> <span class="mf">51.25125</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.....................</span>                   <span class="p">]</span> <span class="mf">54.45445</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.......................</span>                 <span class="p">]</span> <span class="mf">57.65766</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">........................</span>                <span class="p">]</span> <span class="mf">60.86086</span> \
+<span class="p">[</span><span class="o">.........................</span>               <span class="p">]</span> <span class="mf">64.06406</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">..........................</span>              <span class="p">]</span> <span class="mf">67.26727</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">............................</span>            <span class="p">]</span> <span class="mf">70.47047</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">.............................</span>           <span class="p">]</span> <span class="mf">73.67367</span> \
+<span class="p">[</span><span class="o">..............................</span>          <span class="p">]</span> <span class="mf">76.87688</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">................................</span>        <span class="p">]</span> <span class="mf">80.08008</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">.................................</span>       <span class="p">]</span> <span class="mf">83.28328</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">..................................</span>      <span class="p">]</span> <span class="mf">86.48649</span> \
+<span class="p">[</span><span class="o">...................................</span>     <span class="p">]</span> <span class="mf">89.68969</span> <span class="o">|</span>
+<span class="p">[</span><span class="o">.....................................</span>   <span class="p">]</span> <span class="mf">92.89289</span> <span class="o">/</span>
+<span class="p">[</span><span class="o">......................................</span>  <span class="p">]</span> <span class="mf">96.09610</span> <span class="o">-</span>
+<span class="p">[</span><span class="o">.......................................</span> <span class="p">]</span> <span class="mf">99.29930</span> \    <span class="n">Computing</span> <span class="n">cluster</span> <span class="n">p</span><span class="o">-</span><span class="n">values</span>
 <span class="n">Step</span><span class="o">-</span><span class="n">down</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">jumps</span> <span class="n">iteration</span> <span class="c1">#2 found 0 additional clusters to exclude from subsequent iterations</span>
 <span class="n">Done</span><span class="o">.</span>
 </pre></div>
@@ -406,11 +465,11 @@ on the contrast faces vs. scrambled.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_sensor_cluster_stats_eeg_channel_002.png" class="align-center" src="../../_images/sphx_glr_plot_sensor_cluster_stats_eeg_channel_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  7.966 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.940 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_sensor_cluster_stats_eeg_channel.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_sensor_cluster_stats_eeg_channel.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_sensor_cluster_stats_eeg_channel.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_sensor_cluster_stats_eeg_channel.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -428,8 +487,8 @@ on the contrast faces vs. scrambled.</p>
       
     </p>
     <p>
-        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-09.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.<br/>
+        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-27.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

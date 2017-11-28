@@ -89,7 +89,6 @@ First the filtered raw data.
     148 events found
     Events id: [ 5  6  7 13 14 15 17 18 19]
     50 matching events found
-    Not setting metadata
     Created an SSP operator (subspace dimension = 8)
     8 projection items activated
 
@@ -719,10 +718,8 @@ Run :func:`mne.preprocessing.maxwell_filter`, and band-pass filter the data.
     h_trans_bandwidth chosen to be 10.0 Hz
     Filter length of 363 samples (0.330 sec) selected
     50 matching events found
-    Not setting metadata
     0 projection items activated
     50 matching events found
-    Not setting metadata
     0 projection items activated
 
 
@@ -768,7 +765,7 @@ Plotting
 
 
 
-**Total running time of the script:** ( 2 minutes  58.164 seconds)
+**Total running time of the script:** ( 4 minutes  10.482 seconds)
 
 
 

@@ -29,7 +29,7 @@ on the contrast faces vs. scrambled.
 
     sys.path.append(op.join('..', '..', 'processing'))
     from library.config import (meg_dir, l_freq, exclude_subjects, annot_kwargs,
-                                set_matplotlib_defaults)  # noqa: E402
+                                set_matplotlib_defaults, random_state)  # noqa: E402
 
 
 
@@ -98,7 +98,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 159 - aspect type = 100
+            nave = 139 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -120,7 +120,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 194 - aspect type = 100
+            nave = 193 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -131,7 +131,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 126 - aspect type = 100
+            nave = 127 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -175,7 +175,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 85 - aspect type = 100
+            nave = 116 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -197,7 +197,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 107 - aspect type = 100
+            nave = 116 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -208,7 +208,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 59 - aspect type = 100
+            nave = 60 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -230,7 +230,7 @@ Read all the data
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 125 - aspect type = 100
+            nave = 135 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
     Applying baseline correction (mode: mean)
@@ -275,7 +275,7 @@ Assemble the data and run the cluster stats on channel data
     cluster_stats = permutation_cluster_1samp_test(
         data, threshold=threshold, n_jobs=2, verbose=True, tail=1,
         connectivity=connectivity, out_type='indices',
-        check_disjoint=True, step_down_p=0.05)
+        check_disjoint=True, step_down_p=0.05, seed=random_state)
 
     T_obs, clusters, p_values, _ = cluster_stats
     good_cluster_inds = np.where(p_values < 0.05)[0]
@@ -292,10 +292,10 @@ Assemble the data and run the cluster stats on channel data
 
     Could not find a connectivity matrix for the data. Computing connectivity based on Delaunay triangulations.
     -- number of connected vertices : 70
-    stat_fun(H1): min=-10.266957 max=12.513435
+    stat_fun(H1): min=-9.714884 max=12.075012
     No disjoint connectivity sets found
     Running initial clustering
-    Found 9 clusters
+    Found 8 clusters
     Permuting 1023 times...
     Computing cluster p-values
     Step-down-in-jumps iteration #1 found 1 cluster to exclude from subsequent iterations
@@ -400,7 +400,7 @@ Visualize the spatio-temporal clusters
 
 
 
-**Total running time of the script:** ( 0 minutes  15.605 seconds)
+**Total running time of the script:** ( 0 minutes  30.441 seconds)
 
 
 

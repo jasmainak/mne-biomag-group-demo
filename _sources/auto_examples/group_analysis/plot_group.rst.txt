@@ -43,7 +43,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous + 0.062 * famous)
             0 CTF compensation matrices available
-            nave = 2742 - aspect type = 100
+            nave = 2830 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -51,7 +51,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled + 0.062 * scrambled)
             0 CTF compensation matrices available
-            nave = 2636 - aspect type = 100
+            nave = 2702 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -59,7 +59,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar + 0.062 * unfamiliar)
             0 CTF compensation matrices available
-            nave = 2779 - aspect type = 100
+            nave = 2841 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -67,7 +67,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast + 0.062 * contrast)
             0 CTF compensation matrices available
-            nave = 1783 - aspect type = 100
+            nave = 1832 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -75,7 +75,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces + 0.062 * faces)
             0 CTF compensation matrices available
-            nave = 5523 - aspect type = 100
+            nave = 5672 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -83,7 +83,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq + 0.062 * faces_eq)
             0 CTF compensation matrices available
-            nave = 2636 - aspect type = 100
+            nave = 2702 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -91,7 +91,7 @@ Grand-average group contrasts for sensor space, dSPM, and LCMV.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq + 0.062 * scrambled_eq)
             0 CTF compensation matrices available
-            nave = 2636 - aspect type = 100
+            nave = 2702 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
 
@@ -218,34 +218,6 @@ Source-space. See :ref:`sphx_glr_auto_scripts_14-group_average_source.py`
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.00e+00 fmid=3.00e+00 fmax=5.00e+00 transparent=1
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.00e+00 fmid=3.00e+00 fmax=5.00e+00 transparent=1
 
 
 LCMV beamformer
@@ -270,37 +242,9 @@ LCMV beamformer
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.50e-02 fmid=3.00e-02 fmax=4.50e-02 transparent=1
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.50e-02 fmid=3.00e-02 fmax=4.50e-02 transparent=1
 
 
-**Total running time of the script:** ( 0 minutes  54.321 seconds)
+**Total running time of the script:** ( 1 minutes  52.565 seconds)
 
 
 

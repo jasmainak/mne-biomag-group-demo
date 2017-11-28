@@ -6,7 +6,7 @@
 The events are extracted from stimulus channel 'STI101'. The events are saved
 to the subject's MEG directory.
 """
-import os
+
 import os.path as op
 
 import mne
@@ -18,9 +18,6 @@ from library.config import study_path, meg_dir, N_JOBS
 def run_events(subject_id):
     subject = "sub%03d" % subject_id
     print("processing subject: %s" % subject)
-    if not op.exists(op.join(meg_dir, subject)):
-        os.mkdir(op.join(meg_dir, subject))
-
     in_path = op.join(study_path, 'ds117', subject, 'MEG')
     out_path = op.join(meg_dir, subject)
     for run in range(1, 7):

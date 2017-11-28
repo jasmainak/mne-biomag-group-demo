@@ -164,7 +164,6 @@ First, we don't highpass filter and only baseline correct.
  Out::
 
     48 matching events found
-    Not setting metadata
     0 projection items activated
     Transforming to ICA space (66 components)
     Zeroing out 4 ICA components
@@ -200,7 +199,6 @@ visible (see above).
  Out::
 
     48 matching events found
-    Not setting metadata
     0 projection items activated
     Transforming to ICA space (66 components)
     Zeroing out 4 ICA components
@@ -241,13 +239,12 @@ See :ref:`sphx_glr_auto_scripts_03-maxwell_filtering.py`.
     Current compensation grade : 0
     Reading 0 ... 543399  =      0.000 ...   493.999 secs...
     48 matching events found
-    Not setting metadata
     0 projection items activated
     Transforming to ICA space (66 components)
     Zeroing out 4 ICA components
 
 
-**Total running time of the script:** ( 0 minutes  56.015 seconds)
+**Total running time of the script:** ( 1 minutes  2.616 seconds)
 
 
 

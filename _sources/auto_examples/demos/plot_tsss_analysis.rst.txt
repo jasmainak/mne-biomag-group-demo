@@ -174,10 +174,8 @@ Epochs :ref:`sphx_glr_auto_scripts_06-make_epochs.py`.
             t =    -200.00 ...    2900.00 ms
             0 CTF compensation matrices available
     681 matching events found
-    Not setting metadata
     Created an SSP operator (subspace dimension = 1)
     681 matching events found
-    Not setting metadata
     Created an SSP operator (subspace dimension = 1)
     1 projection items activated
 
@@ -571,10 +569,10 @@ Covariance :ref:`sphx_glr_auto_scripts_07-make_evoked.py`.
         Created an SSP operator (subspace dimension = 1)
     Setting small EEG eigenvalues to zero.
     Not doing PCA for EEG.
-    Total rank is 70
+    Total rank is 69
 
 
-**Total running time of the script:** ( 1 minutes  33.349 seconds)
+**Total running time of the script:** ( 1 minutes  39.740 seconds)
 
 
 

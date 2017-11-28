@@ -3,15 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Remove ECG and EOG using ICA &#8212; MNE Biomag Demo</title>
-    
-    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootswatch-3.3.6/flatly/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,10 +20,10 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -211,7 +206,6 @@
 <span class="n">Filter</span> <span class="n">length</span> <span class="n">of</span> <span class="mi">16384</span> <span class="n">samples</span> <span class="p">(</span><span class="mf">14.895</span> <span class="n">sec</span><span class="p">)</span> <span class="n">selected</span>
 <span class="n">Number</span> <span class="n">of</span> <span class="n">ECG</span> <span class="n">events</span> <span class="n">detected</span> <span class="p">:</span> <span class="mi">439</span> <span class="p">(</span><span class="n">average</span> <span class="n">pulse</span> <span class="mi">53</span> <span class="o">/</span> <span class="nb">min</span><span class="o">.</span><span class="p">)</span>
 <span class="mi">439</span> <span class="n">matching</span> <span class="n">events</span> <span class="n">found</span>
-<span class="n">Not</span> <span class="n">setting</span> <span class="n">metadata</span>
 <span class="n">Created</span> <span class="n">an</span> <span class="n">SSP</span> <span class="n">operator</span> <span class="p">(</span><span class="n">subspace</span> <span class="n">dimension</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Loading</span> <span class="n">data</span> <span class="k">for</span> <span class="mi">439</span> <span class="n">events</span> <span class="ow">and</span> <span class="mi">661</span> <span class="n">original</span> <span class="n">time</span> <span class="n">points</span> <span class="o">...</span>
 <span class="mi">0</span> <span class="n">bad</span> <span class="n">epochs</span> <span class="n">dropped</span>
@@ -262,12 +256,11 @@
 <span class="n">Now</span> <span class="n">detecting</span> <span class="n">blinks</span> <span class="ow">and</span> <span class="n">generating</span> <span class="n">corresponding</span> <span class="n">events</span>
 <span class="n">Number</span> <span class="n">of</span> <span class="n">EOG</span> <span class="n">events</span> <span class="n">detected</span> <span class="p">:</span> <span class="mi">198</span>
 <span class="mi">198</span> <span class="n">matching</span> <span class="n">events</span> <span class="n">found</span>
-<span class="n">Not</span> <span class="n">setting</span> <span class="n">metadata</span>
 <span class="n">Created</span> <span class="n">an</span> <span class="n">SSP</span> <span class="n">operator</span> <span class="p">(</span><span class="n">subspace</span> <span class="n">dimension</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Loading</span> <span class="n">data</span> <span class="k">for</span> <span class="mi">198</span> <span class="n">events</span> <span class="ow">and</span> <span class="mi">1101</span> <span class="n">original</span> <span class="n">time</span> <span class="n">points</span> <span class="o">...</span>
 <span class="mi">0</span> <span class="n">bad</span> <span class="n">epochs</span> <span class="n">dropped</span>
 <span class="n">Applying</span> <span class="n">baseline</span> <span class="n">correction</span> <span class="p">(</span><span class="n">mode</span><span class="p">:</span> <span class="n">mean</span><span class="p">)</span>
-<span class="n">Found</span> <span class="mi">3</span> <span class="n">EOG</span> <span class="n">component</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Found</span> <span class="mi">4</span> <span class="n">EOG</span> <span class="n">component</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Again look at the impact of these sources on the EOG epochs:</p>
@@ -297,11 +290,11 @@
 <li><a class="first reference internal image-reference" href="../../_images/sphx_glr_plot_ica_011.png"><img alt="../../_images/sphx_glr_plot_ica_011.png" src="../../_images/sphx_glr_plot_ica_011.png" style="width: 329.0px; height: 282.0px;" /></a>
 </li>
 </ul>
-<p><strong>Total running time of the script:</strong> ( 1 minutes  11.118 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 1 minutes  25.284 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ica.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ica.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ica.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_ica.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -319,8 +312,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-09.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.2.<br/>
+        &copy; Copyright 2017, MNE Developers. Last updated on 2017-11-27.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

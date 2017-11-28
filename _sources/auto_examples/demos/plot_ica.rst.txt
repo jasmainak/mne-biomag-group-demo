@@ -177,7 +177,6 @@ Now let's find ECG events and score ICA components:
     Filter length of 16384 samples (14.895 sec) selected
     Number of ECG events detected : 439 (average pulse 53 / min.)
     439 matching events found
-    Not setting metadata
     Created an SSP operator (subspace dimension = 1)
     Loading data for 439 events and 661 original time points ...
     0 bad epochs dropped
@@ -282,12 +281,11 @@ Now do the same for EOG:
     Now detecting blinks and generating corresponding events
     Number of EOG events detected : 198
     198 matching events found
-    Not setting metadata
     Created an SSP operator (subspace dimension = 1)
     Loading data for 198 events and 1101 original time points ...
     0 bad epochs dropped
     Applying baseline correction (mode: mean)
-    Found 3 EOG component(s)
+    Found 4 EOG component(s)
 
 
 Again look at the impact of these sources on the EOG epochs:
@@ -363,7 +361,7 @@ Look at the properties of these EOG sources:
 
 
 
-**Total running time of the script:** ( 1 minutes  11.118 seconds)
+**Total running time of the script:** ( 1 minutes  25.284 seconds)
 
 
 

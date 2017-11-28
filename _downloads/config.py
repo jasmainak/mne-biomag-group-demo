@@ -20,7 +20,7 @@ if user == 'gramfort':
     N_JOBS = 8
 elif user == 'mjas':
     study_path = '/tsi/doctorants/data_gramfort/dgw_faces_reproduce'
-    N_JOBS = 4
+    N_JOBS = 1
 elif user == 'jleppakangas':
     study_path = '/tsi/doctorants/data_gramfort/dgw_faces'
     N_JOBS = 8
@@ -55,6 +55,10 @@ map_subjects = {1: 'subject_01', 2: 'subject_02', 3: 'subject_03',
                 13: 'subject_16', 14: 'subject_17', 15: 'subject_18',
                 16: 'subject_19', 17: 'subject_23', 18: 'subject_24',
                 19: 'subject_25'}
+
+
+if not os.path.isdir(study_path):
+    os.mkdir(study_path)
 
 if not os.path.isdir(subjects_dir):
     os.mkdir(subjects_dir)
@@ -104,6 +108,7 @@ l_freq = None
 tmin = -0.2
 tmax = 2.9  # min duration between onsets: (400 fix + 800 stim + 1700 ISI) ms
 reject_tmax = 0.8  # duration we really care about
+random_state = 42
 
 smooth = 10
 

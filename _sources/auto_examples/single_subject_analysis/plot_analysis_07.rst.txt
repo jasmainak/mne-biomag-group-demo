@@ -173,11 +173,9 @@ Epochs :ref:`sphx_glr_auto_scripts_06-make_epochs.py`.
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms
             0 CTF compensation matrices available
-    874 matching events found
-    Not setting metadata
+    869 matching events found
     Created an SSP operator (subspace dimension = 1)
-    874 matching events found
-    Not setting metadata
+    869 matching events found
     Created an SSP operator (subspace dimension = 1)
     1 projection items activated
 
@@ -207,7 +205,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (famous)
             0 CTF compensation matrices available
-            nave = 294 - aspect type = 100
+            nave = 292 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -215,7 +213,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (scrambled)
             0 CTF compensation matrices available
-            nave = 291 - aspect type = 100
+            nave = 288 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -231,7 +229,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (contrast)
             0 CTF compensation matrices available
-            nave = 194 - aspect type = 100
+            nave = 193 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -239,7 +237,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (faces)
             0 CTF compensation matrices available
-            nave = 583 - aspect type = 100
+            nave = 581 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -247,7 +245,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (faces_eq)
             0 CTF compensation matrices available
-            nave = 291 - aspect type = 100
+            nave = 288 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
         Read a total of 1 projection items:
@@ -255,7 +253,7 @@ Evoked responses :ref:`sphx_glr_auto_scripts_07-make_evoked.py`
         Found the data of interest:
             t =    -200.00 ...    2900.00 ms (scrambled_eq)
             0 CTF compensation matrices available
-            nave = 291 - aspect type = 100
+            nave = 288 - aspect type = 100
     Projections have already been applied. Setting proj attribute to True.
     No baseline correction applied
 
@@ -573,7 +571,7 @@ Covariance :ref:`sphx_glr_auto_scripts_07-make_evoked.py`.
         Created an SSP operator (subspace dimension = 1)
     Setting small EEG eigenvalues to zero.
     Not doing PCA for EEG.
-    Total rank is 70
+    Total rank is 69
 
 
 TFR :ref:`sphx_glr_auto_scripts_09-time_frequency.py`.
@@ -703,8 +701,9 @@ Trans
         Distance information added...
         [done]
         2 source spaces read
-    Using outer_skin.surf for head surface.
+    Using outer_skin for head surface.
     Getting helmet for system 306m
+    Using /tsi/doctorants/data_gramfort/dgw_faces_reproduce/subjects/sub007/bem/flash/inner_skull.surf for head surface.
 
 
 Faces :ref:`sphx_glr_auto_scripts_13-make_inverse.py`.
@@ -734,34 +733,6 @@ Faces :ref:`sphx_glr_auto_scripts_13-make_inverse.py`.
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.09e+01 fmid=1.24e+01 fmax=2.26e+01 transparent=1
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=1.09e+01 fmid=1.24e+01 fmax=2.26e+01 transparent=1
 
 
 Faces - scrambled
@@ -779,34 +750,6 @@ Faces - scrambled
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=6.38e+00 fmid=7.28e+00 fmax=1.43e+01 transparent=1
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=6.38e+00 fmid=7.28e+00 fmax=1.43e+01 transparent=1
 
 
 LCMV Faces - scrambled
@@ -828,34 +771,6 @@ LCMV Faces - scrambled
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=5.10e-02 fmid=6.05e-02 fmax=1.47e-01 transparent=1
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=5.10e-02 fmid=6.05e-02 fmax=1.47e-01 transparent=1
 
 
 BEM
@@ -882,7 +797,7 @@ BEM
     Using surface: /tsi/doctorants/data_gramfort/dgw_faces_reproduce/subjects/sub007/bem/outer_skin.surf
 
 
-**Total running time of the script:** ( 3 minutes  8.780 seconds)
+**Total running time of the script:** ( 4 minutes  29.721 seconds)
 
 
 

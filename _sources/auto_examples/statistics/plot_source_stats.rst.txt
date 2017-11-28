@@ -27,7 +27,7 @@ Clustering in source space.
 
     sys.path.append(op.join('..', '..', 'processing'))
     from library.config import (meg_dir, subjects_dir, fsaverage_vertices,
-                                exclude_subjects, N_JOBS, l_freq)  # noqa: E402
+                                exclude_subjects, N_JOBS, l_freq, random_state)  # noqa: E402
 
     faces = list()
     scrambled = list()
@@ -124,8 +124,8 @@ simplicity we'll do 1024.
     T_obs, clusters, cluster_p_values, H0 = clu = \
         spatio_temporal_cluster_1samp_test(
             X, connectivity=connectivity, n_jobs=N_JOBS, threshold=t_threshold,
-            stat_fun=stat_fun, buffer_size=None, seed=0, step_down_p=0.05,
-            verbose=True)
+            stat_fun=stat_fun, buffer_size=None, seed=random_state,
+            step_down_p=0.05, verbose=True)
 
     good_cluster_inds = np.where(cluster_p_values < 0.05)[0]
     for ind in good_cluster_inds:
@@ -139,21 +139,21 @@ simplicity we'll do 1024.
 
  Out::
 
-    stat_fun(H1): min=-6.581166 max=9.054187
+    stat_fun(H1): min=-5.180371 max=9.858437
     Running initial clustering
-    Found 892 clusters
+    Found 875 clusters
     Permuting 1023 times...
-    Computing cluster p-values
+    [                                        ] 0.09775 |        [.                                       ] 3.12805 /        [..                                      ] 6.25611 -        [...                                     ] 9.38416 \        [.....                                   ] 12.51222 |        [......                                  ] 15.64027 /        [.......                                 ] 18.76833 -        [........                                ] 21.89638 \        [..........                              ] 25.02444 |        [...........                             ] 28.15249 /        [............                            ] 31.28055 -        [.............                           ] 34.40860 \        [...............                         ] 37.53666 |        [................                        ] 40.66471 /        [.................                       ] 43.79277 -        [..................                      ] 46.92082 \        [....................                    ] 50.04888 |        [.....................                   ] 53.17693 /        [......................                  ] 56.30499 -        [.......................                 ] 59.43304 \        [.........................               ] 62.56109 |        [..........................              ] 65.68915 /        [...........................             ] 68.81720 -        [............................            ] 71.94526 \        [..............................          ] 75.07331 |        [...............................         ] 78.20137 /        [................................        ] 81.32942 -        [.................................       ] 84.45748 \        [...................................     ] 87.58553 |        [....................................    ] 90.71359 /        [.....................................   ] 93.84164 -        [......................................  ] 96.96970 \    Computing cluster p-values
     Step-down-in-jumps iteration #1 found 5 clusters to exclude from subsequent iterations
     Permuting 1023 times...
-    Computing cluster p-values
+    [                                        ] 0.09775 |        [.                                       ] 3.12805 /        [..                                      ] 6.25611 -        [...                                     ] 9.38416 \        [.....                                   ] 12.51222 |        [......                                  ] 15.64027 /        [.......                                 ] 18.76833 -        [........                                ] 21.89638 \        [..........                              ] 25.02444 |        [...........                             ] 28.15249 /        [............                            ] 31.28055 -        [.............                           ] 34.40860 \        [...............                         ] 37.53666 |        [................                        ] 40.66471 /        [.................                       ] 43.79277 -        [..................                      ] 46.92082 \        [....................                    ] 50.04888 |        [.....................                   ] 53.17693 /        [......................                  ] 56.30499 -        [.......................                 ] 59.43304 \        [.........................               ] 62.56109 |        [..........................              ] 65.68915 /        [...........................             ] 68.81720 -        [............................            ] 71.94526 \        [..............................          ] 75.07331 |        [...............................         ] 78.20137 /        [................................        ] 81.32942 -        [.................................       ] 84.45748 \        [...................................     ] 87.58553 |        [....................................    ] 90.71359 /        [.....................................   ] 93.84164 -        [......................................  ] 96.96970 \    Computing cluster p-values
     Step-down-in-jumps iteration #2 found 0 additional clusters to exclude from subsequent iterations
     Done.
-    Found cluster with p=0.015625
-    Found cluster with p=0.0419922
-    Found cluster with p=0.0488281
-    Found cluster with p=0.0126953
-    Found cluster with p=0.0498047
+    Found cluster with p=0.0390625
+    Found cluster with p=0.00976562
+    Found cluster with p=0.0166016
+    Found cluster with p=0.0390625
+    Found cluster with p=0.00683594
 
 
 Visualize the results:
@@ -180,37 +180,9 @@ Visualize the results:
     :align: center
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=-1.00e+02 fmid=0.00e+00 fmax=1.00e+02 transparent=0
-    Updating smoothing matrix, be patient..
-    Smoothing matrix creation, step 1
-    Smoothing matrix creation, step 2
-    Smoothing matrix creation, step 3
-    Smoothing matrix creation, step 4
-    Smoothing matrix creation, step 5
-    Smoothing matrix creation, step 6
-    Smoothing matrix creation, step 7
-    Smoothing matrix creation, step 8
-    Smoothing matrix creation, step 9
-    Smoothing matrix creation, step 10
-    colormap: fmin=-1.00e+02 fmid=0.00e+00 fmax=1.00e+02 transparent=0
 
 
-**Total running time of the script:** ( 18 minutes  12.631 seconds)
+**Total running time of the script:** ( 41 minutes  3.700 seconds)
 
 
 
